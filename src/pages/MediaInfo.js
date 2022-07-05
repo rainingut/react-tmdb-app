@@ -58,9 +58,8 @@ export function MediaInfo (props) {
           <div className="container text-white" style={{backdropFilter:'brightness(0.5) blur(8px)',zIndex:1 }}>
             <div className=" p-3 d-flex flex-wrap flex-md-nowrap position-relative">
               <div className="w-100 w-md-50 d-flex justify-content-center align-items-start">
-                { content?.poster_path?
+                { content?.poster_path&&
                   (<img className="img" src={img_size(342)+content?.poster_path} alt={content?.name}/>)
-                  :''
                 }
               </div>
               <div className="p-3 w-100 w-md-50">
@@ -87,7 +86,7 @@ export function MediaInfo (props) {
                   <p className="h4 high-light">
                       <span className="h2 p-1">{content?.vote_average}分</span>
                       <span>/</span>
-                      <span className="h6 p-1">{content?.vote_count}人票選</span>
+                      <span className="h6 p-1">{content?.vote_count}人評價</span>
                     </p>
                 </div>
                 <hr />
@@ -106,8 +105,8 @@ export function MediaInfo (props) {
                               <div key={sIdx?.id} className="col-3 d-flex flex-column">
                                 <div className="w-100 d-flex justify-content-center align-items-center"  role="button"
                                   onClick={() => getMediaDetail(mediaType, sContent?.id)}
-                                >{sContent?.poster_path?
-                  (<img className="img h-100" src={img_size(185)+sContent?.poster_path} alt={sContent?.name}/>):''}</div>
+                                >{sContent?.poster_path&&
+                  (<img className="img h-100" src={img_size(185)+sContent?.poster_path} alt={sContent?.name}/>)}</div>
                               </div>
                             )
                           }

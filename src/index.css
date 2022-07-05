@@ -21,3 +21,7 @@
   max-width: 100%;
   object-fit: cover;
 }
+
+.list-high-light{
+  background-color: cyan;
+}

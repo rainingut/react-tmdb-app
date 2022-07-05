@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Form, FormControl, ListGroup, Nav, NavDropdown,  } from 'react-bootstrap';
 import { Media_api } from '../../common/media-api-service';
+import reactStringReplace from 'react-string-replace';
 
 export function SearchBar({on_click}){
   // 搜尋 query
@@ -62,11 +63,13 @@ export function SearchBar({on_click}){
       <ListGroup defaultActiveKey="" className="position-absolute top-100 w-100">
         {lists.map((item, idx) => {
           if(idx < 5){
+            const name = item?.name || item?.title || item?.original_name;
+            const renderName = reactStringReplace(name, current_query, (match, i ) => (<span className="list-high-light">{match}</span>))
             return(
             <ListGroup.Item action key={item?.id} 
               className={!isOpen ? 'dont-see-me' : ''}
               onClick={(e) => getMediaDetail(e, item)} >
-              {item?.name || item?.title || item?.original_name}
+              {renderName}
             </ListGroup.Item>
             )
           }
